@@ -44,15 +44,15 @@ public class TrybankLib
     {
         if (Logged)
         {
-            throw new ArgumentException("Usuário já está logado");
+            throw new AccessViolationException("Usuário já está logado");
         }
         for (int i = 0; i < registeredAccounts; i++)
         {
             if (Bank[i, 0] == number && Bank[i, 1] == agency)
             {
-                if (Bank[i, 3] == pass)
+                if (Bank[i, 2] == pass)
                 {
-                    Logged = false;
+                    Logged = true;
                     loggedUser = i;
                 }
                 else
