@@ -123,12 +123,13 @@ public class TrybankLib
         {
             throw new InvalidOperationException("Saldo insuficiente");
         }
-        Bank[loggedUser, 3] -= value;
         for (int i = 0; i < registeredAccounts; i++)
         {
             if (Bank[i, 0] == destinationNumber && Bank[i, 1] == destinationAgency)
             {
+                Bank[loggedUser, 3] -= value;
                 Bank[i, 3] += value;
+                break;
             }
         }
     }
